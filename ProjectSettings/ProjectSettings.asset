@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 26
-  productGUID: b3a622f8f072ccb4da1e4590b7dd6bb8
+  productGUID: 53c33280a32797e44bd3ccd9fca5370f
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: DepremDemo
+  productName: VR-ASYS-DEPREM
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -879,14 +879,14 @@ PlayerSettings:
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: DepremDemo
+  metroPackageName: VR-ASYS-DEPREM
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: DepremDemo
+  metroApplicationDescription: VR-ASYS-DEPREM
   wsaImages: {}
   metroTileShortName: 
   metroTileShowName: 0
@@ -953,13 +953,13 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 2
+  activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: e3b279a0-16d1-4460-8806-99cacb277492
+  cloudProjectId: baa1e77c-d215-4181-9a59-2a53d1d1dba7
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: DepremDemo
-  organizationId: eminduran
+  projectName: VR-ASYS-DEPREM
+  organizationId: unity_774607dea031b6149b22
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
