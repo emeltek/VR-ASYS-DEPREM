@@ -862,7 +862,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108973554}
   serializedVersion: 4
-  m_Mass: 50
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -8884,7 +8884,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967293
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &699055921
 Transform:
@@ -11296,7 +11296,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967293
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &964325283
 Transform:
@@ -11547,7 +11547,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967293
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &985440296
 Transform:
@@ -11706,6 +11706,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1004648600}
+  - component: {fileID: 1004648601}
   m_Layer: 0
   m_Name: 3D HOUSE
   m_TagString: Untagged
@@ -11739,6 +11740,22 @@ Transform:
   - {fileID: 875313447}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1004648601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004648599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd8f2e91bf94a040beb4ef1e441c109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 60
+  magnitude: 0
+  maxMagnitude: 0.2
+  noiseScale: 1
 --- !u!1 &1015398099
 GameObject:
   m_ObjectHideFlags: 0
@@ -14621,6 +14638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 1000
   magnitude: 0.1
+  maxMagnitude: 0.1
   noiseScale: 1
 --- !u!1 &1279609781
 GameObject:
@@ -14638,7 +14656,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967293
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1279609782
 Transform:
@@ -14721,7 +14739,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967293
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1287796277
 Transform:
@@ -15487,7 +15505,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!1 &1310019328
 GameObject:
@@ -16473,13 +16491,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1310019360}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cd8f2e91bf94a040beb4ef1e441c109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1000
-  magnitude: 0.1
+  duration: 60
+  magnitude: 0
+  maxMagnitude: 0.1
   noiseScale: 1
 --- !u!23 &1312284408
 MeshRenderer:
@@ -19448,7 +19467,7 @@ Transform:
   m_GameObject: {fileID: 1645431677}
   serializedVersion: 2
   m_LocalRotation: {x: -0.70707756, y: -0.006432635, z: -0.0064326325, w: 0.70707756}
-  m_LocalPosition: {x: -5.316949, y: 0.001998961, z: -0.695}
+  m_LocalPosition: {x: -5.31, y: 0.001998961, z: -0.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19617,7 +19636,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645431677}
   serializedVersion: 4
-  m_Mass: 50
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -19786,7 +19805,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967293
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1677454524
 Transform:
@@ -20050,7 +20069,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967293
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1712868659
 Transform:
@@ -23677,7 +23696,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023620668}
   serializedVersion: 4
-  m_Mass: 50
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -23872,7 +23891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2c87220543dfe408f82a56b956fb0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
   intensity: 0.1
 --- !u!1 &2033035401
 GameObject:
@@ -24561,7 +24580,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967293
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2095941043
 Transform:

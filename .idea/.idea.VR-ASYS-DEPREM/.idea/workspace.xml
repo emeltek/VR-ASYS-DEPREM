@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e49a4587-4bcc-4d0c-bc29-90ab00103855" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/ShakeGroundObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/ShakeGroundObject.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +90,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1727424820356</updated>
-      <workItem from="1727424822875" duration="335000" />
+      <workItem from="1727424822875" duration="930000" />
     </task>
     <servers />
   </component>
