@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
+using DG.Tweening;  // DoTween kütüphanesini kullanmak için gerekli
 
 public class GroundShake : MonoBehaviour
 {
     public float duration = 10f;  // Deprem süresi
-    public float magnitude = 0.1f;  // Sarsıntı şiddeti
+    public float magnitude = 0f;  // Sarsıntı şiddeti (başlangıçta 0)
+    public float maxMagnitude = 0.1f;  // Maksimum sarsıntı şiddeti
     public float noiseScale = 1f;  // Perlin gürültüsü ölçeği
 
     private float elapsedTime = 0f;
@@ -14,10 +17,18 @@ public class GroundShake : MonoBehaviour
     {
         originalPosition = transform.position;
         originalRotation = transform.rotation;
+
+        // İlk yarıda magnitude'u maxMagnitude değerine kadar artır
+        DOTween.To(() => magnitude, x => magnitude = x, maxMagnitude, duration / 2).OnComplete(() =>
+        {
+            // İkinci yarıda magnitude'u tekrar 0'a düşür
+            DOTween.To(() => magnitude, x => magnitude = x, 0f, duration / 2);
+        });
     }
 
     void Update()
     {
+        Debug.Log("deprem sallanma şiddeti: " + magnitude);
         if (elapsedTime < duration)
         {
             // Pozisyon değişimi
