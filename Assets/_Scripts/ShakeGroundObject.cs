@@ -28,7 +28,7 @@ public class ShakeGroundObject : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("deprem sallanma şiddeti: " + magnitude);
+       
         if (elapsedTime < duration)
         {
             isShaking = true;

@@ -1,6 +1,7 @@
 ﻿ using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -14,6 +15,7 @@ namespace StarterAssets
 #endif
     public class ThirdPersonController : MonoBehaviour
     {
+        public bool comel = false;
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -49,6 +51,8 @@ namespace StarterAssets
         [Header("Player Grounded")]
         [Tooltip("If the character is grounded or not. Not part of the CharacterController built in grounded check")]
         public bool Grounded = true;
+
+        
 
         [Tooltip("Useful for rough ground")]
         public float GroundedOffset = -0.14f;
@@ -152,6 +156,7 @@ namespace StarterAssets
             _fallTimeoutDelta = FallTimeout;
         }
 
+
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
@@ -159,6 +164,29 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            if (Grounded)
+            {
+                if (Input.GetKeyDown(KeyCode.C))
+                {
+                   comel = _animator.GetBool("comel");
+                    comel = !comel;
+                    _animator.SetBool("comel", comel);
+                    if (comel)
+                    {
+                        MoveSpeed = 0f;
+                        SprintSpeed = 0f;
+
+                    }
+                    else
+                    {
+                        
+                        MoveSpeed = 2f;
+                        SprintSpeed = 5.33f;
+                    }
+                }
+                    
+
+            }
         }
 
         private void LateUpdate()
@@ -278,6 +306,8 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
         }
+       
+
 
         private void JumpAndGravity()
         {

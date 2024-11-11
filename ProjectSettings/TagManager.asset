@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - DangerArea
   - SafeArea
+  - Cover
   layers:
   - Default
   - TransparentFX
