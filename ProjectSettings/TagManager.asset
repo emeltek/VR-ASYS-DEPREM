@@ -8,6 +8,25 @@ TagManager:
   - DangerArea
   - SafeArea
   - Cover
+  - QDSUIToggleButton
+  - QDSUIToggleSwitch
+  - QDSUITooltip
+  - QDSUISharedThemeColor
+  - QDSUIAccentColor
+  - QDSUIBorderlessButton
+  - QDSUISecondaryButton
+  - QDSUIToggleBorderlessButton
+  - QDSUIIcon
+  - QDSUITextSecondaryColor
+  - QDSUIBackplateGradient
+  - QDSUIPrimaryButton
+  - QDSUITextInvertedColor
+  - QDSUITextSecondaryInvertedColor
+  - QDSUISection
+  - QDSUITextInputField
+  - QDSUIToggleCheckboxRadio
+  - QDSUIDestructiveButton
+  - SamplesInfoPanel
   layers:
   - Default
   - TransparentFX
@@ -15,7 +34,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Teleport
   - 
   - 
   - 
