@@ -1,59 +1,82 @@
-using System;
 using UnityEngine;
-using DG.Tweening;  // DoTween kütüphanesini kullanmak için gerekli
+using DG.Tweening;
 
 public class ShakeGroundObject : MonoBehaviour
 {
-    public float duration = 10f;  // Deprem süresi
-    public float magnitude = 0f;  // Sarsıntı şiddeti (başlangıçta 0)
-    public float maxMagnitude = 0.1f;  // Maksimum sarsıntı şiddeti
-    public float noiseScale = 1f;  // Perlin gürültüsü ölçeği
-    public bool isShaking = false;
+    public float duration = 10f;
+    public float magnitude = 0f;
+    public float maxMagnitude = 0.1f;
+    public float noiseScale = 1f;
+
+    public bool shakeActive = false;
+
+    // 🔥 player.cs uyumluluğu için
+    public bool isShaking => shakeActive;
+
     private float elapsedTime = 0f;
-    private Vector3 originalPosition;
-    private Quaternion originalRotation;
+    private Vector3 originalLocalPosition;
+    private Quaternion originalLocalRotation;
 
     void Start()
     {
-        originalPosition = transform.position;
-        originalRotation = transform.rotation;
-
-        // İlk yarıda magnitude'u maxMagnitude değerine kadar artır
-        DOTween.To(() => magnitude, x => magnitude = x, maxMagnitude, duration / 2).OnComplete(() =>
-        {
-            // İkinci yarıda magnitude'u tekrar 0'a düşür
-            DOTween.To(() => magnitude, x => magnitude = x, 0f, duration / 2);
-        });
+        originalLocalPosition = transform.localPosition;
+        originalLocalRotation = transform.localRotation;
     }
 
-    void Update()
+    // 🔘 Button burayı çağıracak
+    public void StartShake()
     {
-       
+        if (shakeActive) return;
+
+        shakeActive = true;
+        elapsedTime = 0f;
+
+        DOTween.Kill(this);
+
+        DOTween.To(() => magnitude, x => magnitude = x, maxMagnitude, duration / 2)
+            .SetTarget(this)
+            .OnComplete(() =>
+            {
+                DOTween.To(() => magnitude, x => magnitude = x, 0f, duration / 2)
+                    .SetTarget(this);
+            });
+    }
+
+    void LateUpdate()
+    {
+        if (!shakeActive) return;
+
         if (elapsedTime < duration)
         {
-            isShaking = true;
-            // Pozisyon değişimi
             float x = Mathf.PerlinNoise(Time.time * noiseScale, 0) * 2 - 1;
             float z = Mathf.PerlinNoise(0, Time.time * noiseScale) * 2 - 1;
-            Vector3 newPosition = originalPosition + new Vector3(x, 0, z) * magnitude;
 
-            // Rotasyon değişimi
+            Vector3 newPos =
+                originalLocalPosition + new Vector3(x, 0, z) * magnitude;
+
             float tiltX = Mathf.PerlinNoise(Time.time * noiseScale, 1) * 2 - 1;
             float tiltZ = Mathf.PerlinNoise(1, Time.time * noiseScale) * 2 - 1;
-            Quaternion newRotation = Quaternion.Euler(tiltX * magnitude * 10, 0, tiltZ * magnitude * 10) * originalRotation;
 
-            // Pozisyon ve rotasyonu uygula
-            transform.position = newPosition;
-            transform.rotation = newRotation;
+            Quaternion newRot =
+                Quaternion.Euler(tiltX * magnitude * 10, 0, tiltZ * magnitude * 10);
+
+            transform.localPosition = newPos;
+            transform.localRotation = originalLocalRotation * newRot;
 
             elapsedTime += Time.deltaTime;
         }
         else
         {
-            isShaking = false;
-            // Deprem bittiğinde orijinal pozisyon ve rotasyona dön
-            transform.position = originalPosition;
-            transform.rotation = originalRotation;
+            StopShake();
         }
+    }
+
+    public void StopShake()
+    {
+        shakeActive = false;
+        magnitude = 0f;
+
+        transform.localPosition = originalLocalPosition;
+        transform.localRotation = originalLocalRotation;
     }
 }
