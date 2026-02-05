@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e49a4587-4bcc-4d0c-bc29-90ab00103855" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-ASYS-DEPREM/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-ASYS-DEPREM/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-ASYS-DEPREM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-ASYS-DEPREM/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Earthquake/Interior/3D MATERIAL/Wood_Parquet/Wood_Parquet.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Earthquake/Interior/3D MATERIAL/Wood_Parquet/Wood_Parquet.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Oculus/OculusProjectConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Oculus/OculusProjectConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/Meta XR Interaction ​SDK/83.0.3/Example Scenes/ConcurrentHandsControllersExamples.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/Meta XR Interaction ​SDK/83.0.3/Example Scenes/ConcurrentHandsControllersExamples.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExamScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExamScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/ShakeGroundObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/ShakeGroundObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VRTemplate.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VRTemplate.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +96,7 @@
       <workItem from="1727701286772" duration="600000" />
       <workItem from="1770036654412" duration="282000" />
       <workItem from="1770037004024" duration="978000" />
+      <workItem from="1770226181047" duration="58000" />
     </task>
     <servers />
   </component>

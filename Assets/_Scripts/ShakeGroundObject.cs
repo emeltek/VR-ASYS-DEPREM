@@ -1,5 +1,9 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class ShakeGroundObject : MonoBehaviour
 {
@@ -12,6 +16,12 @@ public class ShakeGroundObject : MonoBehaviour
 
     // 🔥 player.cs uyumluluğu için
     public bool isShaking => shakeActive;
+
+    // 🔘 Buton referansları
+    [Header("Button References")]
+    [SerializeField] private GameObject buttons;
+    [SerializeField] private GameObject startButton;
+    [SerializeField] private GameObject scoreUI;
 
     private float elapsedTime = 0f;
     private Vector3 originalLocalPosition;
@@ -30,6 +40,11 @@ public class ShakeGroundObject : MonoBehaviour
 
         shakeActive = true;
         elapsedTime = 0f;
+        startButton.gameObject.SetActive(false);
+
+        // Tüm butonları kapat
+        if (buttons != null)
+            buttons.SetActive(false);
 
         DOTween.Kill(this);
 
@@ -78,5 +93,33 @@ public class ShakeGroundObject : MonoBehaviour
 
         transform.localPosition = originalLocalPosition;
         transform.localRotation = originalLocalRotation;
+
+        // Deprem bitince tüm butonları aç
+        if (buttons != null)
+            buttons.SetActive(true);
+            scoreUI.SetActive(true);
+    }
+
+    // 🔄 Refresh Scene butonu için
+    public void RefreshScene()
+    {
+        // Aktif sahneyi yeniden yükle
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void ExitScene()
+    {
+        // Uygulamayı kapat
+        #if UNITY_EDITOR
+            EditorApplication.isPlaying = false; // Unity Editor'de test için
+        #else
+            Application.Quit(); // Build edilmiş uygulamada çalışır
+        #endif
+    }
+
+    public void TestScene()
+    {
+        // Test sahnesine git
+        SceneManager.LoadScene("CombinationPanelScene");
     }
 }
