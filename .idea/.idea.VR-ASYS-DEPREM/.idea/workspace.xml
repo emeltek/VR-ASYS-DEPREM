@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e49a4587-4bcc-4d0c-bc29-90ab00103855" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/Meta XR Interaction ​SDK/83.0.3/Example Scenes/ConcurrentHandsControllersExamples.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/Meta XR Interaction ​SDK/83.0.3/Example Scenes/ConcurrentHandsControllersExamples.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-ASYS-DEPREM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-ASYS-DEPREM/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExamScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExamScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/VRTemplate.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/VRTemplate.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,6 +100,7 @@
       <workItem from="1770036654412" duration="282000" />
       <workItem from="1770037004024" duration="978000" />
       <workItem from="1770226181047" duration="58000" />
+      <workItem from="1770636239898" duration="3199000" />
     </task>
     <servers />
   </component>
