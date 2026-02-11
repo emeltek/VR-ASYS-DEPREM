@@ -82653,7 +82653,7 @@ GameObject:
   - component: {fileID: 2351217244086557429}
   - component: {fileID: 8882137184917669921}
   m_Layer: 4
-  m_Name: ResetButton Variant
+  m_Name: "AnimasyonBa\u015FlatButonu"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99388,6 +99388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeGroundObject: {fileID: 1004648601}
+  animButonGameObject: {fileID: 2971454469204559349}
 --- !u!114 &6265967565921678834
 MonoBehaviour:
   m_ObjectHideFlags: 0

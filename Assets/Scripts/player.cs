@@ -7,6 +7,7 @@ public class player : MonoBehaviour
     // Start is called before the first frame update
     Animator animator;
     public ShakeGroundObject shakeGroundObject;
+    [SerializeField] public GameObject animButonGameObject;
   
     void Start()
     {
@@ -17,6 +18,7 @@ public class player : MonoBehaviour
     public void  StartRunAnimation()
     {
         animator.SetBool("Run", true);
+        animButonGameObject.SetActive(false);
     }
 
   private void OnTriggerEnter(Collider other)
