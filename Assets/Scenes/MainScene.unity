@@ -10711,7 +10711,6 @@ GameObject:
   - component: {fileID: 335667256}
   - component: {fileID: 337961690}
   - component: {fileID: 337961689}
-  - component: {fileID: 337961691}
   m_Layer: 0
   m_Name: Alcor
   m_TagString: Untagged
@@ -10783,20 +10782,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 55427371e1fe3d84a8983187ca4f03d6, type: 3}
---- !u!114 &337961691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337870584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f2b59a3eb95b34db15d96108b98ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeGroundObject: {fileID: 1004648601}
-  canBePushed: 0
 --- !u!1 &348306718
 GameObject:
   m_ObjectHideFlags: 0
@@ -25429,7 +25414,6 @@ GameObject:
   - component: {fileID: 620175077}
   - component: {fileID: 620175079}
   - component: {fileID: 620175083}
-  - component: {fileID: 1235239982}
   m_Layer: 0
   m_Name: Lucrezia
   m_TagString: Untagged
@@ -36866,7 +36850,6 @@ GameObject:
   - component: {fileID: 903526789}
   - component: {fileID: 905952106}
   - component: {fileID: 905952102}
-  - component: {fileID: 905952107}
   m_Layer: 0
   m_Name: Eracle
   m_TagString: Untagged
@@ -37039,20 +37022,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: ad4e12547ee9e024593f9b3bba36c672, type: 3}
---- !u!114 &905952107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905455429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f2b59a3eb95b34db15d96108b98ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeGroundObject: {fileID: 1004648601}
-  canBePushed: 0
 --- !u!1 &910968655
 GameObject:
   m_ObjectHideFlags: 0
@@ -43554,20 +43523,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 293706170}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1235239982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 617971748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f2b59a3eb95b34db15d96108b98ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeGroundObject: {fileID: 1004648601}
-  canBePushed: 0
 --- !u!1 &1239369326
 GameObject:
   m_ObjectHideFlags: 0
@@ -50719,7 +50674,6 @@ GameObject:
   - component: {fileID: 1487810879}
   - component: {fileID: 1488942080}
   - component: {fileID: 1488942081}
-  - component: {fileID: 1488942082}
   m_Layer: 0
   m_Name: Recipio
   m_TagString: Untagged
@@ -50903,20 +50857,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1488942082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1485615103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f2b59a3eb95b34db15d96108b98ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeGroundObject: {fileID: 1004648601}
-  canBePushed: 0
 --- !u!1 &1491587868
 GameObject:
   m_ObjectHideFlags: 0
@@ -59717,7 +59657,6 @@ GameObject:
   - component: {fileID: 1694097419}
   - component: {fileID: 1694097421}
   - component: {fileID: 1694097420}
-  - component: {fileID: 1694097422}
   m_Layer: 0
   m_Name: Alcor
   m_TagString: Untagged
@@ -59839,20 +59778,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 55427371e1fe3d84a8983187ca4f03d6, type: 3}
---- !u!114 &1694097422
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692106443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f2b59a3eb95b34db15d96108b98ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeGroundObject: {fileID: 1004648601}
-  canBePushed: 0
 --- !u!1 &1697321193
 GameObject:
   m_ObjectHideFlags: 0
@@ -62320,7 +62245,6 @@ GameObject:
   - component: {fileID: 1828758153}
   - component: {fileID: 1828758152}
   - component: {fileID: 1828758151}
-  - component: {fileID: 1828758156}
   m_Layer: 0
   m_Name: Lucrezia
   m_TagString: Untagged
@@ -62462,20 +62386,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828758149}
   m_Mesh: {fileID: 4300000, guid: 3238cad55dc8cc740b0af6ae4c33b61b, type: 3}
---- !u!114 &1828758156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828758149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f2b59a3eb95b34db15d96108b98ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeGroundObject: {fileID: 1004648601}
-  canBePushed: 0
 --- !u!1 &1832234729
 GameObject:
   m_ObjectHideFlags: 0
@@ -65010,7 +64920,6 @@ GameObject:
   - component: {fileID: 1923723873}
   - component: {fileID: 1924722851}
   - component: {fileID: 1924722850}
-  - component: {fileID: 1924722852}
   m_Layer: 0
   m_Name: Gemina
   m_TagString: Untagged
@@ -65168,20 +65077,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 8c18e680c656c67489c7c886cc5de632, type: 3}
---- !u!114 &1924722852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1921723553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f2b59a3eb95b34db15d96108b98ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeGroundObject: {fileID: 1004648601}
-  canBePushed: 0
 --- !u!1 &1933817195
 GameObject:
   m_ObjectHideFlags: 0
@@ -65287,7 +65182,6 @@ GameObject:
   - component: {fileID: 1939913675}
   - component: {fileID: 1939913677}
   - component: {fileID: 1939913679}
-  - component: {fileID: 1939913680}
   m_Layer: 0
   m_Name: Elios
   m_TagString: Untagged
@@ -65410,20 +65304,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &1939913680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939913673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f2b59a3eb95b34db15d96108b98ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeGroundObject: {fileID: 1004648601}
-  canBePushed: 0
 --- !u!1 &1940524520
 GameObject:
   m_ObjectHideFlags: 0
@@ -70245,7 +70125,6 @@ GameObject:
   - component: {fileID: 2118287680}
   - component: {fileID: 2120325413}
   - component: {fileID: 2120325412}
-  - component: {fileID: 2120713121}
   m_Layer: 0
   m_Name: Max
   m_TagString: Untagged
@@ -70373,20 +70252,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 655257376}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2120713121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120228736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f2b59a3eb95b34db15d96108b98ee3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeGroundObject: {fileID: 1004648601}
-  canBePushed: 0
 --- !u!1 &2124344045
 GameObject:
   m_ObjectHideFlags: 0
