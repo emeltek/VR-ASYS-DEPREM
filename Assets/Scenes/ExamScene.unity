@@ -38960,7 +38960,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.27, y: 0.16, z: 2.25}
+  m_Size: {x: 1.27, y: 0.34, z: 2.25}
   m_Center: {x: 0.38130268, y: -0.022759203, z: 1.0337204}
 --- !u!1 &2010400843
 GameObject:
@@ -40256,7 +40256,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.15, y: 0.19, z: 2.34}
+  m_Size: {x: 1.15, y: 0.28, z: 2.34}
   m_Center: {x: 0.38130268, y: -0.02276111, z: 1.0337204}
 --- !u!1 &2078858874
 GameObject:
@@ -115681,6 +115681,12 @@ MonoBehaviour:
   warningAreaStayPenalty: -3
   dangerAreaEnterPenalty: -10
   dangerAreaStayPenalty: -5
+  exposedAreaBasePenalty: -5
+  exposedAreaPenaltyIncrement: -2
+  exposedAreaMaxPenalty: -15
+  excellentThreshold: 80
+  goodThreshold: 60
+  failThreshold: 30
   showDebugLogs: 1
 --- !u!4 &7223636008873787834
 Transform:
@@ -120368,6 +120374,12 @@ MonoBehaviour:
   warningAreaStayPenalty: -3
   dangerAreaEnterPenalty: -10
   dangerAreaStayPenalty: -5
+  exposedAreaBasePenalty: -5
+  exposedAreaPenaltyIncrement: -2
+  exposedAreaMaxPenalty: -15
+  excellentThreshold: 80
+  goodThreshold: 60
+  failThreshold: 30
   showDebugLogs: 1
 --- !u!1 &7502249867087982830
 GameObject:
