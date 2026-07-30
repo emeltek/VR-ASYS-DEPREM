@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e49a4587-4bcc-4d0c-bc29-90ab00103855" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-ASYS-DEPREM/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-ASYS-DEPREM/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/Meta XR Interaction ​SDK/83.0.3/Example Scenes/UISetExamples.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/Meta XR Interaction ​SDK/83.0.3/Example Scenes/UISetExamples.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scripts/CalculateScore.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/CalculateScore.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Scripts/ShakeGroundObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scripts/ShakeGroundObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +104,8 @@
       <workItem from="1770643607124" duration="965000" />
       <workItem from="1770801998255" duration="457000" />
       <workItem from="1770888252393" duration="1311000" />
+      <workItem from="1785353626791" duration="1429000" />
+      <workItem from="1785436942841" duration="660000" />
     </task>
     <servers />
   </component>

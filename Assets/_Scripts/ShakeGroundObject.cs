@@ -119,7 +119,8 @@ public class ShakeGroundObject : MonoBehaviour
 
     public void TestScene()
     {
-        // Test sahnesine git
-        SceneManager.LoadScene("CombinationPanelScene");
+        // Aktif sahnenin indeksini alıp 1 fazlasını yükler
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }
