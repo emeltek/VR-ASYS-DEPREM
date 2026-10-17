@@ -2,116 +2,73 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Deprem puanlaması. Alan bilgisi artık BoxCollider trigger'larından değil,
+/// eğitilmiş GNN modelinin (GnnRiskPredictor) risk haritasından gelir.
+/// Tehlike cezası, modelin o noktadaki risk skoruyla ölçeklenir:
+/// daha tehlikeli nokta → daha yüksek ceza.
+/// </summary>
 public class CalculateScore : MonoBehaviour
 {
     [Header("UI Settings")]
     public TextMeshProUGUI scoreText;
-    
+
     [Header("Game References")]
     public ShakeGroundObject shakeGroundObject;
-    
+    [Tooltip("Boşsa sahnedeki GnnRiskPredictor kullanılır, o da yoksa otomatik oluşturulur")]
+    [SerializeField] private GnnRiskPredictor riskPredictor;
+    [Tooltip("Konumu puanlanan obje. Boşsa bu obje (PlayerController)")]
+    [SerializeField] private Transform trackedTarget;
+
     [Header("Score Settings")]
     [SerializeField] private int startingScore = 50;
     [SerializeField] private int minScore = 0;
     [SerializeField] private int maxScore = 100;
     [SerializeField] private float updateInterval = 2f;
-    
-    [Header("Puan Değerleri - Safe Area (En İyi)")]
+
+    [Header("Puan Değerleri - Güvenli Alan")]
+    [Tooltip("Deprem boyunca güvenli alana ilk girişte bir kez verilir")]
     [SerializeField] private int safeAreaEnterBonus = 15;
     [SerializeField] private int safeAreaStayBonus = 8;
-    
-    [Header("Puan Değerleri - Warning Area (Orta)")]
-    [SerializeField] private int warningAreaEnterPenalty = -3;
-    [SerializeField] private int warningAreaStayPenalty = -2;
-    
-    [Header("Puan Değerleri - Danger Area (Kötü)")]
-    [SerializeField] private int dangerAreaEnterPenalty = -12;
-    [SerializeField] private int dangerAreaStayPenalty = -6;
-    
-    [Header("Puan Değerleri - Açıkta Kalma (En Kötü)")]
+
+    [Header("Puan Değerleri - Tehlikeli Alan (risk skoruyla ölçeklenir)")]
+    [SerializeField] private int dangerAreaEnterPenaltyMin = -6;
+    [SerializeField] private int dangerAreaEnterPenaltyMax = -15;
+    [SerializeField] private int dangerAreaStayPenaltyMin = -3;
+    [SerializeField] private int dangerAreaStayPenaltyMax = -10;
+    [Tooltip("Bu risk skorunda minimum, 1.0'da maksimum ceza uygulanır")]
+    [SerializeField, Range(0f, 1f)] private float dangerRiskFloor = 0.5f;
+
+    [Header("Puan Değerleri - Açıkta Kalma")]
     [SerializeField] private int exposedAreaBasePenalty = -8;
     [SerializeField] private int exposedAreaPenaltyIncrement = -3;
     [SerializeField] private int exposedAreaMaxPenalty = -20;
-    
+
     [Header("Performans Değerlendirmesi")]
     [SerializeField] private int excellentThreshold = 80;
     [SerializeField] private int goodThreshold = 60;
     [SerializeField] private int failThreshold = 30;
-    
+
     [Header("Debug")]
     [SerializeField] private bool showDebugLogs = true;
-    
-    private int currentScore;
-    private AreaType currentArea = AreaType.None;
-    private int currentExposedPenalty;
-    
-    // ⭐ YENİ: Oyuncunun anlık bir alan içinde olup olmadığını takip eder
-    private bool isInAnyArea = false;
 
-    private enum AreaType
-    {
-        None,
-        SafeArea,
-        WarningArea,
-        DangerArea
-    }
+    private int currentScore;
+    private GnnRiskClass currentArea = GnnRiskClass.Exposed;
+    private int currentExposedPenalty;
+    private bool safeBonusGiven;
+    private bool wasShaking;
 
     private void Start()
     {
+        if (trackedTarget == null) trackedTarget = transform;
+        if (riskPredictor == null) riskPredictor = GnnRiskPredictor.Instance;
+        if (riskPredictor == null) riskPredictor = FindObjectOfType<GnnRiskPredictor>();
+        if (riskPredictor == null) riskPredictor = new GameObject("GNN Risk Predictor").AddComponent<GnnRiskPredictor>();
+
         currentScore = startingScore;
         currentExposedPenalty = exposedAreaBasePenalty;
         UpdateScoreDisplay();
         StartCoroutine(UpdateScoreRoutine());
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        AreaType newArea = GetAreaType(other.tag);
-        if (newArea == AreaType.None) return;
-
-        currentArea = newArea;
-        isInAnyArea = true; // ⭐ Alana girdiğini doğrula
-        currentExposedPenalty = exposedAreaBasePenalty; // Ceza sıfırlandı
-        
-        if (shakeGroundObject != null && !shakeGroundObject.isShaking) return;
-
-        switch (currentArea)
-        {
-            case AreaType.SafeArea:
-                UpdateScore(safeAreaEnterBonus);
-                break;
-            case AreaType.WarningArea:
-                UpdateScore(warningAreaEnterPenalty);
-                break;
-            case AreaType.DangerArea:
-                UpdateScore(dangerAreaEnterPenalty);
-                break;
-        }
-    }
-
-    // ⭐ YENİ: Alanın içinde durduğu sürece alan durumunu aktif tutar
-    private void OnTriggerStay(Collider other)
-    {
-        AreaType area = GetAreaType(other.tag);
-        if (area != AreaType.None)
-        {
-            isInAnyArea = true;
-            currentArea = area;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        AreaType exitedArea = GetAreaType(other.tag);
-        if (exitedArea != AreaType.None)
-        {
-            isInAnyArea = false; // ⭐ Alandan çıktığını doğrula
-            currentArea = AreaType.None;
-            currentExposedPenalty = exposedAreaBasePenalty;
-            
-            if (showDebugLogs)
-                Debug.Log("<color=orange>[CalculateScore] ⚠️ Karakter alandan çıktı, açıkta kaldı!</color>");
-        }
     }
 
     private IEnumerator UpdateScoreRoutine()
@@ -119,60 +76,72 @@ public class CalculateScore : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(updateInterval);
-            
-            // Deprem yoksa puan hesabı yapma
-            if (shakeGroundObject == null || !shakeGroundObject.isShaking)
+
+            bool shaking = shakeGroundObject != null && shakeGroundObject.isShaking;
+            if (!shaking)
             {
+                wasShaking = false;
                 currentExposedPenalty = exposedAreaBasePenalty;
                 continue;
             }
 
-            // ⭐ KONTROL: Eğer bir alanın içinde değilse otomatik None (Açıkta) sayılır
-            if (!isInAnyArea)
+            if (!wasShaking)
             {
-                currentArea = AreaType.None;
+                // Yeni deprem: alan durumunu sıfırla
+                wasShaking = true;
+                safeBonusGiven = false;
+                currentArea = GnnRiskClass.Exposed;
             }
 
-            switch (currentArea)
-            {
-                case AreaType.SafeArea:
-                    currentExposedPenalty = exposedAreaBasePenalty;
-                    UpdateScore(safeAreaStayBonus);
-                    break;
-                    
-                case AreaType.WarningArea:
-                    currentExposedPenalty = exposedAreaBasePenalty;
-                    UpdateScore(warningAreaStayPenalty);
-                    break;
-                    
-                case AreaType.DangerArea:
-                    currentExposedPenalty = exposedAreaBasePenalty;
-                    UpdateScore(dangerAreaStayPenalty);
-                    break;
-                    
-                case AreaType.None:
-                    // 🚨 AÇIKTA KALMA CEZASI
-                    UpdateScore(currentExposedPenalty);
-                    
-                    if (showDebugLogs)
-                        Debug.Log($"<color=red><b>[CalculateScore] 🚨 AÇIKTA KALMA CEZASI: {currentExposedPenalty} puan. Yeni puan: {currentScore}/100</b></color>");
-                    
-                    // Cezayı kademeli artır
-                    currentExposedPenalty = Mathf.Max(currentExposedPenalty + exposedAreaPenaltyIncrement, exposedAreaMaxPenalty);
-                    break;
-            }
+            if (!riskPredictor.IsReady) riskPredictor.PredictNow();
+            GnnPrediction prediction = riskPredictor.GetPrediction(trackedTarget.position);
+            if (!prediction.IsValid) continue;
+
+            ApplyScore(prediction);
         }
     }
 
-    private AreaType GetAreaType(string tag)
+    private void ApplyScore(GnnPrediction prediction)
     {
-        switch (tag)
+        bool entered = prediction.RiskClass != currentArea;
+        currentArea = prediction.RiskClass;
+
+        switch (currentArea)
         {
-            case "SafeArea": return AreaType.SafeArea;
-            case "WarningArea": return AreaType.WarningArea;
-            case "DangerArea": return AreaType.DangerArea;
-            default: return AreaType.None;
+            case GnnRiskClass.Safe:
+                currentExposedPenalty = exposedAreaBasePenalty;
+                int bonus = safeAreaStayBonus;
+                if (entered && !safeBonusGiven)
+                {
+                    bonus += safeAreaEnterBonus;
+                    safeBonusGiven = true;
+                }
+                UpdateScore(bonus);
+                Log("green", $"✅ GÜVENLİ ALAN (p={prediction.SafeProbability:F2}): +{bonus}");
+                break;
+
+            case GnnRiskClass.Danger:
+                currentExposedPenalty = exposedAreaBasePenalty;
+                float severity = Mathf.InverseLerp(dangerRiskFloor, 1f, prediction.RiskScore);
+                int penalty = Mathf.RoundToInt(Mathf.Lerp(dangerAreaStayPenaltyMin, dangerAreaStayPenaltyMax, severity));
+                if (entered)
+                    penalty += Mathf.RoundToInt(Mathf.Lerp(dangerAreaEnterPenaltyMin, dangerAreaEnterPenaltyMax, severity));
+                UpdateScore(penalty);
+                Log("red", $"⛔ TEHLİKELİ ALAN (risk={prediction.RiskScore:F2}, şiddet={severity:F2}): {penalty}");
+                break;
+
+            case GnnRiskClass.Exposed:
+                UpdateScore(currentExposedPenalty);
+                Log("orange", $"🚨 AÇIKTA KALMA (risk={prediction.RiskScore:F2}): {currentExposedPenalty}");
+                currentExposedPenalty = Mathf.Max(currentExposedPenalty + exposedAreaPenaltyIncrement, exposedAreaMaxPenalty);
+                break;
         }
+    }
+
+    private void Log(string color, string message)
+    {
+        if (showDebugLogs)
+            Debug.Log($"<color={color}>[CalculateScore] {message} → Puan: {currentScore}/{maxScore}</color>");
     }
 
     private void UpdateScore(int change)
@@ -186,9 +155,9 @@ public class CalculateScore : MonoBehaviour
         if (scoreText != null)
             scoreText.text = "Puan: " + currentScore.ToString() + "/100";
     }
-    
+
     public int GetCurrentScore() => currentScore;
-    
+
     public string GetPerformanceRating()
     {
         if (currentScore >= excellentThreshold) return "Mükemmel! 🌟";
@@ -196,13 +165,13 @@ public class CalculateScore : MonoBehaviour
         if (currentScore >= failThreshold) return "Orta 😐";
         return "Başarısız ❌";
     }
-    
+
     public void ResetScore()
     {
         currentScore = startingScore;
         currentExposedPenalty = exposedAreaBasePenalty;
-        currentArea = AreaType.None;
-        isInAnyArea = false;
+        currentArea = GnnRiskClass.Exposed;
+        safeBonusGiven = false;
         UpdateScoreDisplay();
     }
 }
