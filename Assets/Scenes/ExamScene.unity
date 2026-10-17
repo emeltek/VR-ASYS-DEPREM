@@ -115916,7 +115916,7 @@ MonoBehaviour:
   shakeGroundObject: {fileID: 1004648601}
   riskPredictor: {fileID: 0}
   trackedTarget: {fileID: 0}
-  startingScore: 100
+  startingScore: 50
   minScore: 0
   maxScore: 100
   updateInterval: 2
