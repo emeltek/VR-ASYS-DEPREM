@@ -49,6 +49,14 @@ public class CalculateScore : MonoBehaviour
     [SerializeField] private int goodThreshold = 60;
     [SerializeField] private int failThreshold = 30;
 
+    [Header("Risk Etiketi (deprem bitince puana göre gösterilir)")]
+    [Tooltip("Bu puan ve üzeri: Güvenli")]
+    [SerializeField] private int safeThreshold = 75;
+    [Tooltip("Bu puan ve üzeri: Orta Riskli")]
+    [SerializeField] private int mediumRiskThreshold = 50;
+    [Tooltip("Bu puan ve üzeri: Riskli. Altı: Yüksek Riskli")]
+    [SerializeField] private int riskyThreshold = 25;
+
     [Header("Debug")]
     [SerializeField] private bool showDebugLogs = true;
 
@@ -57,6 +65,8 @@ public class CalculateScore : MonoBehaviour
     private int currentExposedPenalty;
     private bool safeBonusGiven;
     private bool wasShaking;
+    private bool quakeRunning;
+    private bool showRiskLabel;
 
     private void Start()
     {
@@ -69,6 +79,18 @@ public class CalculateScore : MonoBehaviour
         currentExposedPenalty = exposedAreaBasePenalty;
         UpdateScoreDisplay();
         StartCoroutine(UpdateScoreRoutine());
+    }
+
+    private void Update()
+    {
+        // Deprem başlangıç/bitişini anında yakala: etiket, puan ekranı açılır açılmaz görünsün
+        bool shaking = shakeGroundObject != null && shakeGroundObject.isShaking;
+        if (shaking == quakeRunning) return;
+        quakeRunning = shaking;
+
+        showRiskLabel = !shaking;
+        UpdateScoreDisplay();
+        if (!shaking) Log("cyan", $"🏁 DEPREM BİTTİ: {GetRiskLabel()}");
     }
 
     private IEnumerator UpdateScoreRoutine()
@@ -152,11 +174,32 @@ public class CalculateScore : MonoBehaviour
 
     private void UpdateScoreDisplay()
     {
-        if (scoreText != null)
-            scoreText.text = "Puan: " + currentScore.ToString() + "/100";
+        if (scoreText == null) return;
+
+        string text = "Puan: " + currentScore.ToString() + "/100";
+        if (showRiskLabel)
+            text += $"\n<size=75%><color={GetRiskColor()}>{GetRiskLabel()}</color></size>";
+        scoreText.text = text;
     }
 
     public int GetCurrentScore() => currentScore;
+
+    /// <summary>Puana göre risk etiketi: yüksek puan = doğru davranış = düşük risk.</summary>
+    public string GetRiskLabel()
+    {
+        if (currentScore >= safeThreshold) return "Güvenli";
+        if (currentScore >= mediumRiskThreshold) return "Orta Riskli";
+        if (currentScore >= riskyThreshold) return "Riskli";
+        return "Yüksek Riskli";
+    }
+
+    private string GetRiskColor()
+    {
+        if (currentScore >= safeThreshold) return "#3CC864";
+        if (currentScore >= mediumRiskThreshold) return "#F0B43C";
+        if (currentScore >= riskyThreshold) return "#F07832";
+        return "#E04646";
+    }
 
     public string GetPerformanceRating()
     {
@@ -172,6 +215,7 @@ public class CalculateScore : MonoBehaviour
         currentExposedPenalty = exposedAreaBasePenalty;
         currentArea = GnnRiskClass.Exposed;
         safeBonusGiven = false;
+        showRiskLabel = false;
         UpdateScoreDisplay();
     }
 }
