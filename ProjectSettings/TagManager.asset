@@ -3,40 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - CinemachineTarget
-  - DangerArea
-  - SafeArea
-  - Cover
-  - QDSUIToggleButton
-  - QDSUIToggleSwitch
-  - QDSUITooltip
-  - QDSUISharedThemeColor
-  - QDSUIAccentColor
-  - QDSUIBorderlessButton
-  - QDSUISecondaryButton
-  - QDSUIToggleBorderlessButton
-  - QDSUIIcon
-  - QDSUITextSecondaryColor
-  - QDSUIBackplateGradient
-  - QDSUIPrimaryButton
-  - QDSUITextInvertedColor
-  - QDSUITextSecondaryInvertedColor
-  - QDSUISection
-  - QDSUITextInputField
-  - QDSUIToggleCheckboxRadio
-  - QDSUIDestructiveButton
-  - SamplesInfoPanel
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Overlay UI
+  - 
   - Water
   - UI
-  - Teleport
-  - Furniture
-  - Player
+  - 
+  - 
+  - 
   - 
   - 
   - 
